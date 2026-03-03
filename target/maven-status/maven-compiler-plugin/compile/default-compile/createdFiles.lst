@@ -1,0 +1,6 @@
+com\example\produits\config\DataLoader.class
+com\example\produits\repository\ProductRepository.class
+com\example\produits\config\SecurityConfig.class
+com\example\produits\controller\ProductController.class
+com\example\produits\Application.class
+com\example\produits\entity\Product.class
