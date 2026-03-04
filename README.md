@@ -1,44 +1,58 @@
 # Gestion des Produits - Mini Projet Spring Boot
 
 ## 🎯 Objectif
-Implémenter les bases d'une application Web JEE pour gérer des produits en utilisant **Spring Boot, JPA, Hibernate et Spring Data**.  
-À ce stade, l’accent est mis sur la **création du projet, l’entité Product et la couche DAO**.
+Développer une application Web JEE capable de gérer des produits en utilisant **Spring Boot, JPA/Hibernate, Spring Data, Thymeleaf et Spring Security**.  
+À ce stade, le projet couvre la **couche backend, la couche DAO et les vues avec CRUD complet**.
 
 ---
 
-## 🧩 Partie réalisée
+## 🧩 Parties réalisées
 
-1. **Création du projet Spring Boot**  
-   - Dépendances ajoutées : Spring Web, Spring Data JPA, H2, MySQL, Lombok  
-   - Projet initial prêt à exécuter
+### 1️⃣ Création du projet Spring Boot
+- Dépendances ajoutées : Spring Web, Spring Data JPA, H2/MySQL, Thymeleaf, Lombok, Spring Security, Spring Validation
+- Projet initial prêt à exécuter
 
-2. **Création de l’entité Product**  
-   - Champs : `id`, `name`, `price`, `quantity`  
-   - Annotations JPA et Lombok ajoutées
+### 2️⃣ Création de l’entité Product
+- Champs : `id`, `name`, `price`, `quantity`
+- Annotations JPA (`@Entity`, `@Id`, etc.) et Lombok (`@Data`, `@NoArgsConstructor`, `@AllArgsConstructor`) ajoutées
 
-3. **Création de ProductRepository**  
-   - Interface étendant `JpaRepository<Product, Long>`  
-   - Permet d’effectuer les opérations CRUD (save, findAll, findById, deleteById) sans SQL
+### 3️⃣ Création de ProductRepository
+- Interface étendant `JpaRepository<Product, Long>`
+- Permet de faire toutes les opérations CRUD (create, read, update, delete) automatiquement sans SQL
 
-4. **Test de la couche DAO**  
-   - CommandLineRunner ou test simple pour vérifier que les produits sont bien enregistrés et lus depuis la base de données
+### 4️⃣ Test de la couche DAO
+- Utilisation de `DataLoader.java` pour insérer des produits de test au démarrage
+- Vérification de `save()`, `findAll()`, `findById()` et `count()`
+- Les données sont stockées dans la base configurée dans `application.properties` (H2 ou MySQL)
+
+### 5️⃣ Injection de dépendances
+- DAO et Service injectés via Spring
+- Les objets Repository et Services sont utilisés automatiquement par Spring Boot
+
+### 6️⃣ Controller + vues Thymeleaf (CRUD)
+- **ProductController** : reçoit les requêtes HTTP pour `/products`, `/products/new`, `/products/save`, etc.
+- **Thymeleaf templates** :
+  - `products.html` : affiche la liste de tous les produits
+  - `formProduct.html` : formulaire pour ajouter ou modifier un produit
+  - `layout.html` : template général avec header/footer et Bootstrap
+- Fonctionnalités :
+  - Afficher la liste des produits
+  - Ajouter un produit avec validation du formulaire
+  - Modifier un produit existant
+  - Supprimer un produit
+- Méthodes utilisées :
+  - `@GetMapping` → pour afficher les pages
+  - `@PostMapping` → pour traiter les formulaires
+  - `model.addAttribute(...)` → passer les données aux pages Thymeleaf
+  - `redirect:/products` → retour à la liste après un CRUD
 
 ---
 
 ## ✅ Résultat obtenu
-- Une **base solide backend** fonctionnelle  
-- Accès aux produits via **DAO / Repository**  
-- Connexion à la base de données opérationnelle  
-- Vérification que **JPA et Hibernate** fonctionnent correctement  
-- Projet Spring Boot prêt pour intégrer le Web et la sécurité
-
----
-
-## 🧠 Ce qui reste à faire
-- Création des **Controllers Spring MVC**  
-- Création des **vues Thymeleaf** pour afficher, ajouter, supprimer et modifier des produits  
-- Sécurisation avec **Spring Security**  
-- Ajout de fonctionnalités supplémentaires (recherche, édition, validation…)
+- La couche **backend** fonctionne avec JPA/Hibernate et Spring Data
+- La **base de données** contient des produits de test
+- La **couche web** fonctionne avec Thymeleaf et Bootstrap
+- Toutes les opérations CRUD sont testées et fonctionnelles
 
 ---
 
@@ -46,19 +60,29 @@ Implémenter les bases d'une application Web JEE pour gérer des produits en uti
 src/
 ├── main/
 │ ├── java/
-│ │ └── ma/ensa/di/
-│ │ ├── dao/
-│ │ │ └── ProductRepository.java
-│ │ └── metier/
-│ │ └── Product.java
+│ │ └── com/example/produits/
+│ │ ├── config/
+│ │ │ ├── DataLoader.java
+│ │ │ └── SecurityConfig.java
+│ │ ├── controller/
+│ │ │ └── ProductController.java
+│ │ ├── entity/
+│ │ │ └── Product.java
+│ │ └── repository/
+│ │ └── ProductRepository.java
 │ └── resources/
+│ ├── templates/
+│ │ ├── layout.html
+│ │ ├── products.html
+│ │ └── formProduct.html
 │ └── application.properties
 
-
-> À ce stade, il n’y a **pas encore de Controller ni de vues**, seulement la couche **données**.
 
 ---
 
 ## 🏁 Conclusion
-La première étape du projet est terminée : la **couche backend** est opérationnelle avec JPA, Hibernate et Spring Data.  
-La prochaine étape sera de créer l’**interface web** et d’ajouter la **logique métier côté client**.
+À ce stade du projet :
+- La **base de données** est initialisée et peuplée avec des produits de test
+- La **couche DAO** fonctionne via Spring Data JPA
+- Les **contrôleurs et vues Thymeleaf** permettent l’affichage et la gestion complète des produits (CRUD)  
+- L’application est prête pour **la sécurisation avec Spring Security** et l’ajout de fonctionnalités supplémentaires (recherche, filtres, etc.)
