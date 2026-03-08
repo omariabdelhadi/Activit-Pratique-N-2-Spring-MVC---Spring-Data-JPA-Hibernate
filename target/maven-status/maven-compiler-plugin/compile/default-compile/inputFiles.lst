@@ -1,6 +1,7 @@
-C:\Users\DELL\Desktop\Activiter2\src\main\java\com\example\produits\entity\Product.java
-C:\Users\DELL\Desktop\Activiter2\src\main\java\com\example\produits\config\DataLoader.java
-C:\Users\DELL\Desktop\Activiter2\src\main\java\com\example\produits\controller\ProductController.java
-C:\Users\DELL\Desktop\Activiter2\src\main\java\com\example\produits\repository\ProductRepository.java
-C:\Users\DELL\Desktop\Activiter2\src\main\java\com\example\produits\config\SecurityConfig.java
-C:\Users\DELL\Desktop\Activiter2\src\main\java\com\example\produits\Application.java
+C:\Users\DELL\Desktop\Activiter2\src\main\java\org\example\activiter2\DataLoader.java
+C:\Users\DELL\Desktop\Activiter2\src\main\java\org\example\activiter2\Product.java
+C:\Users\DELL\Desktop\Activiter2\src\main\java\org\example\activiter2\Activiter2Application.java
+C:\Users\DELL\Desktop\Activiter2\src\main\java\org\example\activiter2\ProductRepository.java
+C:\Users\DELL\Desktop\Activiter2\src\main\java\org\example\activiter2\LoginController.java
+C:\Users\DELL\Desktop\Activiter2\src\main\java\org\example\activiter2\ProductController.java
+C:\Users\DELL\Desktop\Activiter2\src\main\java\org\example\activiter2\SecurityConfig.java

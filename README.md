@@ -31,20 +31,40 @@ Développer une application Web JEE capable de gérer des produits en utilisant 
 
 ### 6️⃣ Controller + vues Thymeleaf (CRUD)
 - **ProductController** : reçoit les requêtes HTTP pour `/products`, `/products/new`, `/products/save`, etc.
+
 - **Thymeleaf templates** :
   - `products.html` : affiche la liste de tous les produits
   - `formProduct.html` : formulaire pour ajouter ou modifier un produit
   - `layout.html` : template général avec header/footer et Bootstrap
-- Fonctionnalités :
-  - Afficher la liste des produits
-  - Ajouter un produit avec validation du formulaire
-  - Modifier un produit existant
-  - Supprimer un produit
-- Méthodes utilisées :
-  - `@GetMapping` → pour afficher les pages
-  - `@PostMapping` → pour traiter les formulaires
-  - `model.addAttribute(...)` → passer les données aux pages Thymeleaf
-  - `redirect:/products` → retour à la liste après un CRUD
+
+Fonctionnalités :
+- Afficher la liste des produits
+- Ajouter un produit avec validation du formulaire
+- Modifier un produit existant
+- Supprimer un produit
+
+Méthodes utilisées :
+- `@GetMapping` → pour afficher les pages
+- `@PostMapping` → pour traiter les formulaires
+- `model.addAttribute(...)` → passer les données aux pages Thymeleaf
+- `redirect:/products` → retour à la liste après un CRUD
+
+### 7️⃣ Sécurisation avec Spring Security
+- Ajout de **Spring Security** pour protéger l’accès à l’application
+- Création de la classe `SecurityConfig.java` pour configurer les règles de sécurité
+- Mise en place d’une **authentification avec des utilisateurs en mémoire (InMemoryAuthentication)**
+
+Fonctionnement :
+- Lorsqu’un utilisateur accède à l’application, une **page de login** apparaît automatiquement
+- L’utilisateur doit entrer son **username et password** pour accéder aux pages sécurisées
+
+Exemple d’utilisateurs configurés :
+- `user / 1234` → rôle **USER**
+- `admin / 1234` → rôle **ADMIN**
+
+Objectifs :
+- empêcher l’accès aux pages de gestion des produits sans authentification
+- contrôler l’accès selon les **rôles des utilisateurs**
 
 ---
 
@@ -53,30 +73,33 @@ Développer une application Web JEE capable de gérer des produits en utilisant 
 - La **base de données** contient des produits de test
 - La **couche web** fonctionne avec Thymeleaf et Bootstrap
 - Toutes les opérations CRUD sont testées et fonctionnelles
+- L’application est maintenant **sécurisée avec Spring Security**
 
 ---
 
 ## 📂 Structure du projet actuelle
+
+```
 src/
 ├── main/
-│ ├── java/
-│ │ └── com/example/produits/
-│ │ ├── config/
-│ │ │ ├── DataLoader.java
-│ │ │ └── SecurityConfig.java
-│ │ ├── controller/
-│ │ │ └── ProductController.java
-│ │ ├── entity/
-│ │ │ └── Product.java
-│ │ └── repository/
-│ │ └── ProductRepository.java
-│ └── resources/
-│ ├── templates/
-│ │ ├── layout.html
-│ │ ├── products.html
-│ │ └── formProduct.html
-│ └── application.properties
-
+│   ├── java/
+│   │   └── com/example/produits/
+│   │       ├── config/
+│   │       │   ├── DataLoader.java
+│   │       │   └── SecurityConfig.java
+│   │       ├── controller/
+│   │       │   └── ProductController.java
+│   │       ├── entity/
+│   │       │   └── Product.java
+│   │       └── repository/
+│   │           └── ProductRepository.java
+│   └── resources/
+│       ├── templates/
+│       │   ├── layout.html
+│       │   ├── products.html
+│       │   └── formProduct.html
+│       └── application.properties
+```
 
 ---
 
@@ -84,5 +107,5 @@ src/
 À ce stade du projet :
 - La **base de données** est initialisée et peuplée avec des produits de test
 - La **couche DAO** fonctionne via Spring Data JPA
-- Les **contrôleurs et vues Thymeleaf** permettent l’affichage et la gestion complète des produits (CRUD)  
-- L’application est prête pour **la sécurisation avec Spring Security** et l’ajout de fonctionnalités supplémentaires (recherche, filtres, etc.)
+- Les **contrôleurs et vues Thymeleaf** permettent l’affichage et la gestion complète des produits (CRUD)
+- L’application est maintenant **sécurisée avec Spring Security** pour contrôler l’accès aux pages

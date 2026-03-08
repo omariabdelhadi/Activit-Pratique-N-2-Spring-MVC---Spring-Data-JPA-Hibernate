@@ -1,13 +1,12 @@
-package com.example.produits;
+package org.example.activiter2;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application {
+public class Activiter2Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(Activiter2Application.class, args);
     }
-
 }
